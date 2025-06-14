@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base :: base(content='content')">
+<head>
+    <title>Goals</title>
+</head>
+<body>
+<div class="content">
+    <h1>Goals</h1>
+    <a href="/goals/add" th:href="@{/goals/add}">Add Goal</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Deadline</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="goal : ${goals}">
+            <td th:text="${goal.title}"></td>
+            <td th:text="${goal.amount}"></td>
+            <td th:text="${goal.deadline}"></td>
+            <td>
+                <a th:href="@{'/goals/edit/' + ${goal.id}}">Edit</a>
+                <a th:href="@{'/goals/delete/' + ${goal.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

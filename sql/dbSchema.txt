@@ -1,0 +1,62 @@
+Database Schema
+
+1. Users Table
+users
+
+id (Primary Key, Integer, Auto-increment): Unique identifier for each user.
+username (VARCHAR, Unique, Not Null): Username of the user.
+password (VARCHAR, Not Null): Password for the user.
+email (VARCHAR, Unique, Not Null): Email address of the user.
+created_at (TIMESTAMP, Not Null): Timestamp when the user was created.
+updated_at (TIMESTAMP, Not Null): Timestamp when the user was last updated.
+
+2. Categories Table
+categories
+
+id (Primary Key, Integer, Auto-increment): Unique identifier for each category.
+name (VARCHAR, Not Null): Name of the category (e.g., Salary, Groceries).
+description (VARCHAR): Description of the category.
+user_id (Foreign Key, Integer, Not Null): Reference to the users table.
+
+3. Transactions Table
+transactions
+
+id (Primary Key, Integer, Auto-increment): Unique identifier for each transaction.
+amount (DECIMAL, Not Null): Amount of the transaction.
+date (DATE, Not Null): Date of the transaction.
+description (VARCHAR): Description of the transaction.
+type (ENUM: 'INCOME', 'EXPENSE', Not Null): Type of the transaction.
+category_id (Foreign Key, Integer, Not Null): Reference to the categories table.
+user_id (Foreign Key, Integer, Not Null): Reference to the users table.
+
+4. Budgets Table
+budgets
+
+id (Primary Key, Integer, Auto-increment): Unique identifier for each budget.
+amount (DECIMAL, Not Null): Budgeted amount.
+start_date (DATE, Not Null): Start date of the budget period.
+end_date (DATE, Not Null): End date of the budget period.
+category_id (Foreign Key, Integer, Not Null): Reference to the categories table.
+user_id (Foreign Key, Integer, Not Null): Reference to the users table.
+
+5. Goals Table
+goals
+
+id (Primary Key, Integer, Auto-increment): Unique identifier for each goal.
+name (VARCHAR, Not Null): Name of the goal.
+target_amount (DECIMAL, Not Null): Target amount to achieve the goal.
+current_amount (DECIMAL, Default: 0): Current saved amount towards the goal.
+due_date (DATE, Not Null): Target date to achieve the goal.
+user_id (Foreign Key, Integer, Not Null): Reference to the users table.
+
+6. Recurring Transactions Table
+recurring_transactions
+
+id (Primary Key, Integer, Auto-increment): Unique identifier for each recurring transaction.
+amount (DECIMAL, Not Null): Amount of the recurring transaction.
+start_date (DATE, Not Null): Start date of the recurring transaction.
+frequency (ENUM: 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY', Not Null): Frequency of the recurring transaction.
+description (VARCHAR): Description of the transaction.
+type (ENUM: 'INCOME', 'EXPENSE', Not Null): Type of the transaction.
+category_id (Foreign Key, Integer, Not Null): Reference to the categories table.
+user_id (Foreign Key, Integer, Not Null): Reference to the users table.

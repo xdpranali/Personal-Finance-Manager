@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base :: base(content='content')">
+<head>
+    <title>Recurring Transactions</title>
+</head>
+<body>
+<div class="content">
+    <h1>Recurring Transactions</h1>
+    <a href="/recurring-transactions/add" th:href="@{/recurring-transactions/add}">Add Recurring Transaction</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Description</th>
+            <th>Frequency</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="recurringTransaction : ${recurringTransactions}">
+            <td th:text="${recurringTransaction.amount}"></td>
+            <td th:text="${recurringTransaction.startDate}"></td>
+            <td th:text="${recurringTransaction.endDate}"></td>
+            <td th:text="${recurringTransaction.description}"></td>
+            <td th:text="${recurringTransaction.frequency}"></td>
+            <td>
+                <a th:href="@{'/recurring-transactions/edit/' + ${recurringTransaction.id}}">Edit</a>
+                <a th:href="@{'/recurring-transactions/delete/' + ${recurringTransaction.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

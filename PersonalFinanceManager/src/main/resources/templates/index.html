@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+<div th:replace="~{base :: base (content='content')}">
+    <div th:fragment="content">
+        <h2>Welcome to the Index Page</h2>
+        <p>This is the main content of the index page.</p>
+    </div>
+</div>
+</body>
+</html>

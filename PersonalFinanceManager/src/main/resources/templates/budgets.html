@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base :: base(content='content')">
+<head>
+    <title>Budgets</title>
+</head>
+<body>
+<div class="content">
+    <h1>Budgets</h1>
+    <a href="/budgets/add" th:href="@{/budgets/add}">Add Budget</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="budget : ${budgets}">
+            <td th:text="${budget.amount}"></td>
+            <td th:text="${budget.startDate}"></td>
+            <td th:text="${budget.endDate}"></td>
+            <td th:text="${budget.category.name}"></td>
+            <td>
+                <a th:href="@{'/budgets/edit/' + ${budget.id}}">Edit</a>
+                <a th:href="@{'/budgets/delete/' + ${budget.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
